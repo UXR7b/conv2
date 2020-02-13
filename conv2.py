@@ -20,23 +20,24 @@ onlines = []
 
 
 for n in range(0,memberslen):
-	members1name0=members1[n].rsplit("'first_name': '")
-	members1name1=members1name0[1].rsplit("', 'l")
-	members1name.append(members1name1[0])
+    if "'online': 1" in members1[n]:
+        members1name0=members1[n].rsplit("'first_name': '")
+        members1name1=members1name0[1].rsplit("', 'l")
+        members1name.append(members1name1[0])
+        members1ids0=members1[n].rsplit(", 'f")
+        members1ids.append(members1ids0[0])
 
-for n in range(1,memberslen):
-	members1ids0=members1[n].rsplit(", 'f")
-	members1ids.append(members1ids0[0])
-
-
-for n in range(0,memberslen):
-	if "'online': 1" in members1[n]:
+slen=len(members1ids)
+sslen=len(members1name)
+print(sslen)
+print(slen)
+for n in range(0,slen):
 		onlines.append(members1ids[n])
 		names.append(members1name[n])
 nameslen=len(names)
 onlinesslen=len(onlines)
 
-for n in range(0,nameslen):
+for n in range(0,slen):
 	message+=("[id"+onlines[n]+"|"+names[n]+"]\n")
 
 api.messages.send(random_id=int(time.time()*388),peer_id=peerid,message=str(message))
