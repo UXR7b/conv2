@@ -28,4 +28,4 @@ print(members1ids)
 for n in range(0,names1len):
 	message+=("[id"+members1ids[n]+"|"+members1name[n]+"] ")
 
-try(api.messages.send(random_id=int(time.time()*388),peer_id=peerid,message=str(message)))
+api.messages.send(random_id=int(time.time()*388),peer_id=peerid,message=str(message))
